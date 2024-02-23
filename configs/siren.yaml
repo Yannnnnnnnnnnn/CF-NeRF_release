@@ -1,0 +1,32 @@
+expname: None
+rand: 3
+
+data:
+
+  near: 0.0
+  far: 6.0
+
+model:
+  net_w: 128
+  N_samples: 128
+  framework: SirenNeRF
+  
+  # nerf-minus-minus
+  so3_representation: 'axis-angle'
+
+  # siren
+  siren_sigma_mul: 20.0 # multiply the raw_sigma output of SirenNeRF
+  siren_first_layer_w0: 30.0
+  siren_following_layers_w0: 1.0
+
+training:
+  # learning rate anneal
+  step_size_nerf: 200       # unit: epochs
+  lr_anneal_nerf: 0.9954   # 0.9954
+  lr_nerf: 1.0e-3
+
+  step_size_param: 2000     # unit: epochs
+  lr_anneal_param: 0.9000
+  lr_param: 1.0e-3
+
+  novel_view_synthesis: false  # whether do novel view synthesis during traning
